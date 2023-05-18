@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package lista03;
-import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -12,8 +11,6 @@ import java.util.Calendar;
  */
 public class Pessoa {
 
-    Calendar c = Calendar.getInstance();
-    
     /**
      * @return the data_nascimento
      */
@@ -137,32 +134,42 @@ public class Pessoa {
    
    public String informaObesidade() {
        if(getIMC() < (18.5)) {
-           System.out.println("Grau de obesidade: Abaixo do peso");
+           System.out.println("Classificação: Abaixo do peso");
        }
        else if(getIMC() >= (18.5) && getIMC() <= (24.9)) {
-           System.out.println("Grau de obesidade: Peso normal");
+           System.out.println("Classificação: Peso normal");
        }
        else if(getIMC() >= 25 && getIMC() <= (29.9)) {
-           System.out.println("Grau de obesidade: Sobrepeso");
+           System.out.println("Classificação: Sobrepeso");
        }
        else if(getIMC() >= 30 && getIMC() <= (34.9)) {
-           System.out.println("Grau de obesidade: Obesidade Grau 1");
+           System.out.println("Classificação: Obesidade Grau 1");
        }
        else if(getIMC() >= 35 && getIMC() <= (39.9)) {
-           System.out.println("Grau de obesidade: Obesidade Grau 2");
+           System.out.println("Classificação: Obesidade Grau 2");
        }
        else if(getIMC() >= 40) {
-          System.out.println("Grau de obesidade: Obesidade Grau 3"); 
+          System.out.println("Classificação: Obesidade Grau 3"); 
        }   
    return "";
    }
    
    public int calculaIdade() {
+     Calendar dataAtual = Calendar.getInstance();
+     int anoAtual = dataAtual.get(Calendar.YEAR);
+     int mesAtual = dataAtual.get(Calendar.MONTH) +1;
+     int diaAtual = dataAtual.get(Calendar.DAY_OF_MONTH);
     
-    this.setIdade(getData_nascimento().getAno() - c.get(Calendar.YEAR));
-        return getIdade();
-       
-}  
-   
+     this.setIdade(((anoAtual - this.getData_nascimento().getAno()) -1));
+       if (mesAtual > this.getData_nascimento().getMes()) {
+             this.setIdade((anoAtual - this.getData_nascimento().getAno()));
+            }
+       else if (mesAtual == this.getData_nascimento().getMes()) {
+             if (diaAtual >= this.getData_nascimento().getDia()) {
+             this.setIdade((anoAtual - this.getData_nascimento().getAno()));
+            }
+        }
+     return this.getIdade();
+    }  
 }
 

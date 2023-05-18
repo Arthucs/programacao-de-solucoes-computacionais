@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package lista03;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
 /**
  *
  * @author arthu
@@ -57,15 +54,6 @@ public class Data {
     private int dia;
     private int mes;
     private int ano;
-    
-    public static void main(String[] args) {
-        Calendar c = Calendar.getInstance();
-        Date data = c.getTime();
-        
-        DateFormat f = DateFormat.getDateInstance(DateFormat.FULL);
-        
-        System.out.println("Ano: " + f.format(data));
-        
-    }
-    
+   
+     
 }
